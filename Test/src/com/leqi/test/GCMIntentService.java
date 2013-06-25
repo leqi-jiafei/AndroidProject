@@ -16,6 +16,7 @@ public class GCMIntentService extends GCMBaseIntentService {
     static final String LOG_TAG = "GCMIntentService";
 
     public GCMIntentService() {
+    	//todo
         super(Consts.GSM_SENDER);
     }
 
