@@ -1,0 +1,13 @@
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+<tiles-definitions>
+	<definition name="layout.main" path="/pages/templates/aiMain.jsp">
+        <description>This is the sample of main content attribute, needs to be defined in the actual tile definition implementation, shown below is just a sample value.</description>
+		<put name="title" value="title.payment.integration.system" />
+		<put name="insert_right_bar" value="yes" />
+		<put name="insert_left_bar" value="yes" />
+		<put name="insert_header" value="yes" />
+		<put name="insert_footer" value="yes" />
+		<put name="breadcrumbs" value="/pages/includes/aiBreadcrumbs.jsp" />
+		<put name="styles" value="/pages/includes/styles.jsp" />
+	</definition>
+</tiles-definitions>

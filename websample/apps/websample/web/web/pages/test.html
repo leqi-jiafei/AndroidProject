@@ -1,0 +1,31 @@
+<form action="http://10.176.51.19:8080/jsonWeb/json/getOTP" method="post">
+phone: <input type="text" name="phone" >
+<br>
+<input type="submit" value="getOTP">
+</form>
+<form action="http://10.176.51.19:8080/jsonWeb/json/verify" method="post">
+phone: <input type="text" name="phone">
+<br>
+otp:<input type="text" name="otp"><br>
+<input type="submit" value="verify">
+</form>
+<form action="http://10.176.51.19:8080/jsonWeb/json/register" method="post"><br>
+JSON:<input type="text" name="json">
+<br>
+GCM registration id:<input type="text" name="gcmRegId">
+<br>
+Device unique id:<input type="text" name="deviceId">
+<br>
+phone number:<input type="text" name="phone">
+<br>
+application id:<input type="text" name="appId">
+<br>
+OS:<input type="text" name="os">
+<input type="submit" value="register">
+</form>
+<form action="http://10.176.51.19:8080/jsonWeb/json/updateMessage" method="post">
+Message Id: <input type="text" name="messageId">
+<br>
+status:<input type="text" name="status"><br>
+<input type="submit" value="verify">
+</form>

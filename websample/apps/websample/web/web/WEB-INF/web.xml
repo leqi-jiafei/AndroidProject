@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app  xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" version="2.4">
+ <display-name>Payment Integration System</display-name>
+
+<session-config>
+	<session-timeout>30</session-timeout>
+</session-config>
+
+<!-- This should be the name of the action we want to execute for a
+	url with no path component. A file of this name must exist but will
+	not be used (except to fool the container). -->
+<welcome-file-list>
+	<welcome-file>pages/test.html</welcome-file>
+</welcome-file-list>
+
+  
+
+ <servlet>
+	<servlet-name>action</servlet-name>
+	<servlet-class>
+		org.apache.struts.action.ActionServlet
+	</servlet-class>
+	<init-param>
+		<param-name>config</param-name>
+		<param-value>/WEB-INF/struts-config.xml</param-value>
+	</init-param>
+	<init-param>
+		<param-name>debug</param-name>
+		<param-value>3</param-value>
+	</init-param>
+	<init-param>
+		<param-name>detail</param-name>
+		<param-value>3</param-value>
+	</init-param>
+	<load-on-startup>0</load-on-startup>
+</servlet>
+
+  <servlet-mapping>
+	<servlet-name>action</servlet-name>
+	<url-pattern>/json/*</url-pattern>
+</servlet-mapping>
+
+
+<jsp-config>
+	<taglib>
+		<taglib-uri>struts-bean</taglib-uri>
+		<taglib-location>/WEB-INF/tlds/struts-bean.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>struts-html</taglib-uri>
+		<taglib-location>/WEB-INF/tlds/struts-html-el.tld</taglib-location>
+	</taglib>
+
+	<taglib>
+		<taglib-uri>struts-genurl</taglib-uri>
+		<taglib-location>/WEB-INF/tlds/struts-html-el.tld</taglib-location>
+	</taglib>
+
+	<taglib>
+		<taglib-uri>struts-logic</taglib-uri>
+		<taglib-location>
+			/WEB-INF/tlds/struts-logic.tld
+		</taglib-location>
+	</taglib>
+
+	<taglib>
+		<taglib-uri>c</taglib-uri>
+		<taglib-location>/WEB-INF/tlds/c-rt.tld</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>struts-tiles</taglib-uri>
+		<taglib-location>
+			/WEB-INF/tlds/struts-tiles.tld
+		</taglib-location>
+	</taglib>
+	<taglib>
+		<taglib-uri>sslext</taglib-uri>
+		<taglib-location>/WEB-INF/tlds/sslext.tld</taglib-location>
+	</taglib>
+</jsp-config>
+
+   <!--
+   To specify mime mappings, create a file named mime-mappings.xml, put it in your project's mergedir.
+   Organize mime-mappings.xml following this DTD slice:
+
+   <!ELEMENT mime-mapping (extension, mime-type)>
+   -->
+
+<error-page>
+	<exception-type>Throwable</exception-type>
+	<location>/error.do</location>
+</error-page>
+<error-page>
+	<error-code>404</error-code>
+	<location>/pages/error404.jsp</location>
+</error-page>
+
+ <!--
+ To add taglibs by xml, create a file called taglibs.xml and place it
+ in your merge dir.
+ -->
+
+ 
+</web-app>

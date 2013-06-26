@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jsonWeb Packaging Generator" default="_packaging_generation_">
+	<target name="_packaging_generation_" depends="N65669, copy" />
+	
+	<target name="N65669" description="jsonWeb.war">
+		<mkdir dir="build" />
+		<jar destfile="build/jsonWeb.war">
+			<zipfileset dir="apps/websample/build/com/test/web" prefix="WEB-INF/classes/com/test/web" includes="**/*.class"/>
+			<zipfileset file="apps/websample/web/src/com/test/web/MessageResources.properties"  prefix="WEB-INF/classes/com/test/web"/>
+			<zipfileset dir="apps/websample/web/web/includes" prefix="includes" />
+			<zipfileset dir="apps/websample/web/web/pages" prefix="pages" />
+			<zipfileset dir="apps/websample/web/web/WEB-INF" prefix="WEB-INF" />
+			<zipfileset dir="apps/websample/build/com/test/util" prefix="WEB-INF/classes/com/test/util" />
+			<zipfileset dir="apps/websample/web/web">
+				<include name="default.do" />
+			</zipfileset>
+			<zipfileset dir="lib" prefix="WEB-INF/lib" >
+				<include name="*.jar" />
+			</zipfileset>
+		</jar>
+	</target>
+	<!-- - - - - - - - - - - - - - - - - - 
+	          target: copy                      
+	         - - - - - - - - - - - - - - - - - -->
+	<property name="deploy.home" value="D:\apache-tomcat-6.0.37\webapps" />
+	<target name="copy">
+		<delete>
+			<fileset dir="${deploy.home}">
+				<include name="jsonWeb.war" />
+			</fileset>
+		</delete>
+		<copy todir="${deploy.home}">
+			<fileset dir="build">
+				<include name="jsonWeb.war" />
+			</fileset>
+		</copy>
+	</target>
+	<target name="delete">
+		<delete>
+			<fileset dir="${deploy.home}">
+				<include name="jsonWeb.war" />
+			</fileset>
+		</delete>
+	</target>
+	<property name="jboss.dir" value="C:\Development\jboss-4.0.3SP1">
+	</property>
+	<target name="jboss-start">
+		<exec dir="${jboss.dir}/bin" executable="cmd">
+			<arg value="/C run.bat" />
+		</exec>
+	</target>
+	<target name="jboss-stop">
+		<exec dir="${jboss.dir}/bin" executable="cmd">
+			<arg value="/C shutdownJboss.bat" />
+		</exec>
+	</target>
+	<target name="jboss-restart" depends="jboss-stop,jboss-start" />
+</project>
